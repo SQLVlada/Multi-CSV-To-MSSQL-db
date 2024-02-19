@@ -6,11 +6,11 @@ If you have a lot of different CSV files in local directories and you want to re
 However, there are some challenges and pitfalls that you need to be aware of. Here I will show you how to use Python pandas and sqlalchemy to find all the CSV files in any directory and load them into a MSSQL database, no matter how many columns or rows each CSV file has.
 
 This will explain the code snippet that performs the following tasks:
-- Importing libraries
-- Finding and moving CSV files to a new folder
-- Creating a dataframe from CSV files
-- Formatting table and column names
-- Uploading to SQL database
+* Importing libraries
+* Finding and moving CSV files to a new folder
+* Creating a dataframe from CSV files
+* Formatting table and column names
+* Uploading to SQL database
 
 # import libraries
 Let's go through the code line by line and see what it does.
