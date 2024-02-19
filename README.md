@@ -37,7 +37,7 @@ dataset_dir = 'datasets'
 try:
     mkdir = 'mkdir {0}'.format(dataset_dir)
     os.system(mkdir)
-    print(mkdir)
+    print('Directory {0} is created'.format(dataset_dir))
 except:
     pass
 ```
@@ -48,19 +48,19 @@ The next block of code moves all the CSV files from the current working director
 for csv in csv_files:
     moved_file = 'move "{0}" {1}'.format(csv, dataset_dir)
     os.system(moved_file)
-    print(moved_file)
+    print('File {0} is moved to {1} directory'.format(csv, dataset_dir))
 ```    
 # create dataframe from csv files
-The next block of code creates a dataframe from each CSV file and stores it in a dictionary called df. We create a variable called data_path that contains the path to the datasets folder. We initialize an empty dictionary called df. We loop through the csv_files list and use the pandas read_csv function to read each file as a dataframe. We specify the dtype parameter as 'unicode' to ensure that all the data is read as strings. If there is a UnicodeDecodeError, which means that some characters cannot be decoded properly, we use a different encoding parameter, which is 'ISO-8859-1'. This encoding can handle most of the common characters in European languages. We also print the file name for debugging purposes.
+The next block of code creates a dataframe from each CSV file and stores it in a dictionary called df. We create a variable called data_path that contains the path to the datasets folder. We initialize an empty dictionary called df. We loop through the csv_files list and use the pandas read_csv function to read each file as a dataframe. We encoding parameter 'ISO-8859-1' which can handle most of the common characters in European languages. If there is a UnicodeDecodeError, which means that some characters cannot be decoded properly, we use UTF-8 parameter. We also print the file name for debugging purposes.
 
 ```python
 data_path = os.getcwd() + '/' + dataset_dir + '/'
 df = {}
 for file in csv_files:
     try:
-        df[file] = pd.read_csv(data_path + file, dtype='unicode')
-    except UnicodeDecodeError:
         df[file] = pd.read_csv(data_path + file, encoding='ISO-8859-1')
+    except UnicodeDecodeError:
+        df[file] = pd.read_csv(data_path + file, encoding='UTF-8')
     print(file)
 ```
 # format table and column names
@@ -89,7 +89,6 @@ connection_uri = (
 )
 engine = salch.create_engine(connection_uri, fast_executemany=True)
 dataframe.to_sql(table_name, engine, index=False, if_exists="replace")
-print('file copied to db')
 print('table {0} import to db is completed'.format(table_name))
 ```
 
