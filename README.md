@@ -94,3 +94,6 @@ print('table {0} import to db is completed'.format(table_name))
 
 That's it! We have successfully written a code snippet that can find and move CSV files, create dataframes, format table and column names, and upload to SQL database. 
 I hope this was helpful and informative.
+
+# if you find this snippet helpful, no sugar please 😊
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O5O6UPN40)
