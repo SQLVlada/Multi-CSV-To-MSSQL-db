@@ -49,7 +49,7 @@ for eachfile in csv_files:
 
 # connect to SQL DB
     connection_uri = (
-        "mssql+pyodbc://LENOVO-L14/Post?driver=ODBC+Driver+17+for+SQL+Server"
+        "mssql+pyodbc://USERNAME:PWD@SERVER:Port/dbName?driver=ODBCDriverForSQLServer"
     )
     engine = salch.create_engine(connection_uri, fast_executemany=True)
 
