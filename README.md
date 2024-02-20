@@ -85,7 +85,7 @@ The final block of code uploads each dataframe to a SQL database. We create a va
 
 ```python
 connection_uri = (
-    "mssql+pyodbc://ServerName/dbName?driver=SQL Server ODBC Driver"
+        "mssql+pyodbc://USERNAME:PWD@SERVER:Port/dbName?driver=ODBCDriverForSQLServer"
 )
 engine = salch.create_engine(connection_uri, fast_executemany=True)
 dataframe.to_sql(table_name, engine, index=False, if_exists="replace")
